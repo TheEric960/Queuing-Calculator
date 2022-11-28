@@ -100,10 +100,10 @@ def eval_queue(which_queue: str, *, lmda: float, mu: float, sigma2: float, c: in
         p0 = p0 + factor * offered_load / c / (1 - rho)
         p0 = 1 / p0
 
-        l = offered_load * (offered_load ** (c + 1) * p0) / c / cfactorial / (1 - rho) ** 2 * (1 + cv2) / 2
-        w = l / lmda
-        wq = w + 1 / mu
-        lq = wq * lmda
+        lq = offered_load * (offered_load ** (c + 1) * p0) / c / cfactorial / (1 - rho) ** 2 * (1 + cv2) / 2
+        wq = lq / lmda
+        w = wq + 1 / mu
+        l = w * lmda
 
         return rho, l, w, wq, lq
     elif which_queue == 'MMcN':
