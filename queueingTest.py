@@ -54,8 +54,8 @@ class ErrorsTest(unittest.TestCase):
 
 
 class QueueingTest(unittest.TestCase):
-    def test_MG1(self):
-        rho, l, w, wq, lq, p0 = eval_queue('MG1', lmda=1.125, mu=2.35, sigma2=0.2)
+    def test_eval_MG1(self):
+        rho, l, w, wq, lq, p0 = eval_MG1(lmda=1.125, mu=2.35, sigma2=0.2)
         self.assertAlmostEqual(rho, 0.479, delta=0.001)
         self.assertAlmostEqual(l, 0.941, delta=0.001)
         self.assertAlmostEqual(w, 0.837, delta=0.001)
@@ -63,8 +63,8 @@ class QueueingTest(unittest.TestCase):
         self.assertAlmostEqual(lq, 0.463, delta=0.001)
         self.assertAlmostEqual(p0, 0.521, delta=0.001)
 
-    def test_MMc(self):
-        rho, l, w, wq, lq, p0 = eval_queue('MMc', lmda=3.6, mu=2.15, c=3)
+    def test_eval_MMc(self):
+        rho, l, w, wq, lq, p0 = eval_MMc(lmda=3.6, mu=2.15, c=3)
         self.assertAlmostEqual(rho, 0.558, delta=0.001)
         self.assertAlmostEqual(l, 2.057, delta=0.001)
         self.assertAlmostEqual(w, 0.571, delta=0.001)
@@ -72,16 +72,16 @@ class QueueingTest(unittest.TestCase):
         self.assertAlmostEqual(lq, 0.383, delta=0.001)
         self.assertAlmostEqual(p0, 0.171, delta=0.001)
 
-    def test_MGc(self):
-        rho, l, w, wq, lq = eval_queue('MGc', lmda=5.42, mu=2.18, c=3, sigma2=0.56)
+    def test_eval_MGc(self):
+        rho, l, w, wq, lq = eval_MGc(lmda=5.42, mu=2.18, c=3, sigma2=0.56)
         self.assertAlmostEqual(rho, 0.829, delta=0.001)
         self.assertAlmostEqual(l, 8.640, delta=0.001)
         self.assertAlmostEqual(w, 1.594, delta=0.001)
         self.assertAlmostEqual(wq, 1.135, delta=0.001)
         self.assertAlmostEqual(lq, 6.153, delta=0.001)
 
-    def test_MMcN(self):
-        rho, l, w, wq, lq, p0, pN, lmda_effective = eval_queue('MMcN', lmda=12.98, mu=3.47, c=4, n=15)
+    def test_eval_MMcN(self):
+        rho, l, w, wq, lq, p0, pN, lmda_effective = eval_MMcN(lmda=12.98, mu=3.47, c=4, n=15)
         self.assertAlmostEqual(rho, 0.895, delta=0.001)
         self.assertAlmostEqual(l, 7.217, delta=0.001)
         self.assertAlmostEqual(w, 0.581, delta=0.001)
@@ -91,8 +91,8 @@ class QueueingTest(unittest.TestCase):
         self.assertAlmostEqual(pN, 0.043, delta=0.001)
         self.assertAlmostEqual(lmda_effective, 12.417, delta=0.001)
 
-    def test_MMcKK(self):
-        rho, l, w, wq, lq, p0, lmda_effective = eval_queue('MMcKK', lmda=2.65, mu=1.2, c=5, k=6)
+    def test_eval_MMcKK(self):
+        rho, l, w, wq, lq, p0, lmda_effective = eval_MMcK(lmda=2.65, mu=1.2, c=5, k=6)
         self.assertAlmostEqual(rho, 0.809, delta=0.001)
         self.assertAlmostEqual(l, 4.169, delta=0.001)
         self.assertAlmostEqual(w, 0.859, delta=0.001)

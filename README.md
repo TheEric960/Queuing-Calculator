@@ -1,2 +1,5 @@
 # Queuing-Calculator
-A replacement for a VBA script in ISE 560
+The formulas in this Python script implement the simple queueing models described
+in Chapter 6 of Banks, Carson, Nelson and Nicol, *Discrete-Event System 
+Simulation*, 5th edition.
+
