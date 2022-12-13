@@ -1,6 +1,6 @@
 import unittest
 
-from queuing import *
+from queueing import *
 
 
 class ErrorsTest(unittest.TestCase):

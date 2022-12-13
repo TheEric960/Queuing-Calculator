@@ -27,10 +27,12 @@ Output Parameter Definitions:
 * `p0`: probability of empty system
 * `lmda_effective`: "λ<sub>effective</sub>" i.e. effective arrival rate
 
-Examples:
- * `rho, l, w, wq, lq, p0 = eval_MG1(lmda=1.125, mu=2.35, sigma2=0.2)`
- * `rho, l, w, wq, lq, p0 = eval_MMc(lmda=3.6, mu=2.15, c=3)`
- * `rho, l, w, wq, lq = eval_MGc(lmda=5.42, mu=2.18, c=3, sigma2=0.56)`
- * `rho, l, w, wq, lq, p0, pN, lmda_effective = eval_MMcN(lmda=12.98, mu=3.47, c=4, n=15)`
- * `rho, l, w, wq, lq, p0, lmda_effective = eval_MMcK(lmda=2.65, mu=1.2, c=5, k=6)`
+Usage Examples:
+
+After `import queueing as q`:
+ * `rho, l, w, wq, lq, p0 = q.eval_MG1(lmda=1.125, mu=2.35, sigma2=0.2)`
+ * `rho, l, w, wq, lq, p0 = q.eval_MMc(lmda=3.6, mu=2.15, c=3)`
+ * `rho, l, w, wq, lq = q.eval_MGc(lmda=5.42, mu=2.18, c=3, sigma2=0.56)`
+ * `rho, l, w, wq, lq, p0, pN, lmda_effective = q.eval_MMcN(lmda=12.98, mu=3.47, c=4, n=15)`
+ * `rho, l, w, wq, lq, p0, lmda_effective = q.eval_MMcK(lmda=2.65, mu=1.2, c=5, k=6)`
 
