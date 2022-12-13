@@ -36,12 +36,12 @@ def c_lt_1(c):
         raise ValueError('Number of servers must be positive')
 
 
-def n_le_c(n, c):
+def n_lt_c(n, c):
     if n < c:
         raise ValueError('Capacity must be at least as large as the number of servers')
 
 
-def k_le_c(k, c):
+def k_lt_c(k, c):
     if k < c:
         raise ValueError('Size of calling population must be at least as large as the number of servers')
 
@@ -110,7 +110,7 @@ def eval_queue(which_queue: str, *, lmda: float, mu: float, sigma2: float, c: in
         lmda_ge_mu(lmda, mu)
         lmda_mu_lt_0(lmda, mu)
         c_lt_1(c)
-        n_le_c(N, c)
+        n_lt_c(N, c)
 
         rho = lmda / mu / c
         offered_load = lmda / mu
@@ -141,7 +141,7 @@ def eval_queue(which_queue: str, *, lmda: float, mu: float, sigma2: float, c: in
     elif which_queue == 'MMcKK':
         lmda_ge_mu(lmda, mu)
         c_lt_1(c)
-        k_le_c(K, c)
+        k_lt_c(K, c)
 
         p = [0] * K
         offered_load = lmda / mu
