@@ -92,7 +92,7 @@ class QueueingTest(unittest.TestCase):
         self.assertAlmostEqual(lmda_effective, 12.417, delta=0.001)
 
     def test_eval_MMcKK(self):
-        rho, l, w, wq, lq, p0, lmda_effective = eval_MMcK(lmda=2.65, mu=1.2, c=5, k=6)
+        rho, l, w, wq, lq, p0, lmda_effective = eval_MMcKK(lmda=2.65, mu=1.2, c=5, k=6)
         self.assertAlmostEqual(rho, 0.809, delta=0.001)
         self.assertAlmostEqual(l, 4.169, delta=0.001)
         self.assertAlmostEqual(w, 0.859, delta=0.001)

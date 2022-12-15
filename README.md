@@ -3,6 +3,8 @@ The formulas in this Python script implement the simple queueing models describe
 in Chapter 6 of Banks, Carson, Nelson and Nicol, *Discrete-Event System 
 Simulation*, 5th edition.
 
+This project was a conversion of a macro-enabled VBA document created by Professor Barry Nelson. 
+
 Supported Queues:
 * M/G/1
 * M/M/c

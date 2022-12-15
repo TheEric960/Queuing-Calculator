@@ -1,54 +1,71 @@
+"""
+This script computes queueing results for simple queueing models
+described in Chapter 6 of Banks, Carson, Nelson and Nicol,
+Discrete-Event System Simulation, 5th edition.
+
+Original code courtesy of Professor Barry Nelson
+Python conversion by Jack Wilson
+"""
+
 import math
 
 
 def lmda_ge_mu(lmda, mu):
+    """Check if lambda is greater than equal to mu."""
     if lmda >= mu:
         raise ValueError('The arrival rate must be less than the service rate')
 
 
 def lmda_mu_le_0(lmda, mu):
+    """Check if lamda or mu is less than equal to 0."""
     if lmda <= 0 or mu <= 0:
         raise ValueError('Arrival rate and service rate must be positive')
 
 
 def lmda_mu_lt_0(lmda, mu):
+    """Check if lambda or mu is less than 0."""
     if lmda < 0 or mu < 0:
         raise ValueError('Arrival rate and service rate must be positive')
 
 
 def sigma2_lt_0(sigma2):
+    """Check if the sigma squared is less than 0."""
     if sigma2 < 0:
         raise ValueError('Variance must be nonnegative')
 
 
 def lmda_ge_cmu(lmda, c, mu):
+    """Check if lambda is greater than equal to c times mu."""
     if lmda >= c * mu:
         raise ValueError('The arrival rate must be less than c times the service rate')
 
 
 def lmda_et_cmu(lmda, c, mu):
+    """Check if lambda is equal to c times mu."""
     if lmda == c * mu:
         raise ValueError('This spreadsheet does not handle the case Lambda equal c*Mu')
 
 
 def c_lt_1(c):
+    """Check if c is less than one."""
     if c < 1:
         raise ValueError('Number of servers must be positive')
 
 
 def n_lt_c(n, c):
+    """Check if n is less than c."""
     if n < c:
         raise ValueError('Capacity must be at least as large as the number of servers')
 
 
 def k_lt_c(k, c):
+    """Check if k is less than c."""
     if k < c:
         raise ValueError('Size of calling population must be at least as large as the number of servers')
 
 
-# def eval_queue(which_queue: str, *, lmda: float = 0, mu: float = 0, sigma2: float = 0, c: int = 0, n: int = 0,
-#                k: int = 0):
 def eval_MG1(lmda: float = 0, mu: float = 0, sigma2: float = 0):
+    """Evaluate an M/G/1 queue."""
     lmda_ge_mu(lmda, mu)
     lmda_mu_le_0(lmda, mu)
     sigma2_lt_0(sigma2)
@@ -64,6 +81,7 @@ def eval_MG1(lmda: float = 0, mu: float = 0, sigma2: float = 0):
 
 
 def eval_MMc(lmda: float = 0, mu: float = 0, c: int = 0):
+    """Evaluate an M/M/c queue."""
     lmda_ge_cmu(lmda, c, mu)
     lmda_mu_le_0(lmda, mu)
     c_lt_1(c)
@@ -90,6 +108,7 @@ def eval_MMc(lmda: float = 0, mu: float = 0, c: int = 0):
 
 
 def eval_MGc(lmda: float = 0, mu: float = 0, sigma2: float = 0, c: int = 0):
+    """Evaluate an M/G/c queue."""
     lmda_ge_cmu(lmda, c, mu)
     lmda_mu_le_0(lmda, mu)
     c_lt_1(c)
@@ -118,6 +137,7 @@ def eval_MGc(lmda: float = 0, mu: float = 0, sigma2: float = 0, c: int = 0):
 
 
 def eval_MMcN(lmda: float = 0, mu: float = 0, c: int = 0, n: int = 0):
+    """Evaluate an M/M/c/N queue."""
     lmda_mu_lt_0(lmda, mu)
     c_lt_1(c)
     n_lt_c(n, c)
@@ -154,7 +174,8 @@ def eval_MMcN(lmda: float = 0, mu: float = 0, c: int = 0, n: int = 0):
     return rho, l, w, wq, lq, p0, pN, lmda_effective
 
 
-def eval_MMcK(lmda: float = 0, mu: float = 0, c: int = 0, k: int = 0):
+def eval_MMcKK(lmda: float = 0, mu: float = 0, c: int = 0, k: int = 0):
+    """Evaluate an M/M/c/K/K queue."""
     lmda_mu_lt_0(lmda, mu)
     c_lt_1(c)
     k_lt_c(k, c)
@@ -191,4 +212,3 @@ def eval_MMcK(lmda: float = 0, mu: float = 0, c: int = 0, k: int = 0):
     rho = lmda_effective / c / mu
 
     return rho, l, w, wq, lq, p0, lmda_effective
-
